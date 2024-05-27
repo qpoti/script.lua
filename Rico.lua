@@ -78,6 +78,31 @@ toggleButton.MouseButton1Click:Connect(function()
     end
 end)
 
+local followScriptButton = Instance.new("TextButton")
+followScriptButton.Size = UDim2.new(0.8, 0, 0.2, 0)
+followScriptButton.Position = UDim2.new(0.1, 0, 0.5, 0)
+followScriptButton.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+followScriptButton.Text = "Follow Script"
+followScriptButton.TextColor3 = Color3.fromRGB(255, 0, 0)
+followScriptButton.TextScaled = true
+followScriptButton.Font = Enum.Font.GothamBold
+followScriptButton.Parent = mainFrame
+
+local isFollowingScript = false
+
+followScriptButton.MouseButton1Click:Connect(function()
+    isFollowingScript = not isFollowingScript
+    if isFollowingScript then
+        followScriptButton.Text = "Stop Following"
+        followScriptButton.TextColor3 = Color3.fromRGB(0, 255, 0)
+        -- أضف السكربت الذي يتبع اللاعب هنا
+    else
+        followScriptButton.Text = "Follow Script"
+        followScriptButton.TextColor3 = Color3.fromRGB(255, 0, 0)
+        -- قم بإيقاف السكربت الذي يتبع اللاعب هنا
+    end
+end)
+
 local closeButton = Instance.new("TextButton")
 closeButton.Size = UDim2.new(0.1, 0, 0.1, 0)
 closeButton.Position = UDim2.new(0.9, -10, 0, 10)
@@ -106,12 +131,4 @@ game:GetService('RunService').RenderStepped:Connect(function()
                     if hrp then
                         hrp.Size = Vector3.new(_G.HeadSize, _G.HeadSize, _G.HeadSize)
                         hrp.Transparency = 0.7
-                        hrp.BrickColor = BrickColor.new("Bright yellow") -- اللون الأصفر
-                        hrp.Material = Enum.Material.Neon
-                        hrp.CanCollide = false
-                    end
-                end)
-            end
-        end
-    end
-end)
+                        hrp.BrickColor = BrickColor.new("Bright yellow") -- اللون الأ
